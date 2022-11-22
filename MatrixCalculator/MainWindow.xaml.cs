@@ -23,17 +23,10 @@ namespace MatrixCalculator {
             CramerRule cramerRule = new CramerRule();
             var a = new double[3, 3];
 
-            a[0, 0] = 1;
-            a[0, 1] = 2;
-            a[0, 2] = 1;
+            a[0, 0] = 1;  a[1, 0] = 3;  a[2, 0] = -2;
+            a[0, 1] = 2;  a[1, 1] = -1; a[2, 1] = 2;
+            a[0, 2] = 1;  a[1, 2] = -1; a[2, 2] = 3;
             
-            a[1, 0] = 3;
-            a[1, 1] = -1;
-            a[1, 2] = -1;
-            
-            a[2, 0] = -2;
-            a[2, 1] = 2;
-            a[2, 2] = 3;
             Matrix matrix = new Matrix(a);
             double[] b = {-1, -1, 5};
             
@@ -43,7 +36,7 @@ namespace MatrixCalculator {
             
             variables = cramerRule.GetCramerRule(matrix, answers, variables);
             
-            A.Content = variables[0] + " " + variables[1] + " " + variables[2];
+            A.Content = matrix.GetColum(1).PrintLikeColumn() + matrix.Print();
         }
     }
 }

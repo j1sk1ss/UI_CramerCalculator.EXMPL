@@ -19,27 +19,28 @@ namespace MatrixCalculator.Objects {
             for (var i = 0; i < temp.Length; i++) temp[i] = Body[row, i];
             return new Vector<double>(temp);
         }
-        public void SetColumn(Vector<double> row, int column) {
-            if (row.Size() > Body.GetLength(1)) {
-                MessageBox.Show("Error!");
-                return;
-            }
-
-            for (var i = 0; i < row.Size(); i++) Body[column, i] = row[i];
-        }
         public void SetRow(Vector<double> column, int row) {
-            if (column.Size() > Body.GetLength(0)) {
+            if (column.Size() > Body.GetLength(1)) {
                 MessageBox.Show("Error!");
                 return;
             }
 
-            for (var i = 0; i < column.Size(); i++) Body[i, row] = column[i];
+            for (var i = 0; i < column.Size(); i++) Body[row, i] = column[i];
+        }
+        public void SetColumn(Vector<double> row, int column) {
+            if (row.Size() > Body.GetLength(0)) {
+                MessageBox.Show("Error!");
+                return;
+            }
+
+            for (var i = 0; i < row.Size(); i++) Body[i, column] = row[i];
         }
         public string Print() {
             var temp = "";
             for (var i = 0; i < Body.GetLength(0); i++) {
                 for (var j = 0; j < Body.GetLength(1); j++) {
-                    temp += Body[i, j];
+                    temp += Body[j, i] < 0 ? "" : " ";
+                    temp += Body[j, i] + " ";
                 }
 
                 temp += "\n";

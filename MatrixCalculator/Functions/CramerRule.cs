@@ -9,7 +9,7 @@ namespace MatrixCalculator.Functions {
             if (firstDeterminant == 0) return null;
 
             for (var i = 0; i < matrix.GetSize(0); i++) {
-                matrix.SetRow(answers, i);
+                matrix.SetColumn(answers, i);
                 variables[i] = Math.Round(matrix.GetDeterminant() / firstDeterminant, 0);
                 matrix = new Matrix((double[,])body.Body.Clone());
             }
