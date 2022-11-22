@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Microsoft.VisualBasic;
 
 namespace MatrixCalculator.Objects
 {

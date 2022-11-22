@@ -19,21 +19,21 @@ namespace MatrixCalculator.Objects {
             for (var i = 0; i < temp.Length; i++) temp[i] = Body[row, i];
             return new Vector<double>(temp);
         }
-        public void SetColumn(Vector<double> column, int row) {
-            if (column.Size() > Body.GetLength(1)) {
+        public void SetColumn(Vector<double> row, int column) {
+            if (row.Size() > Body.GetLength(1)) {
                 MessageBox.Show("Error!");
                 return;
             }
 
-            for (var i = 0; i < column.Size(); i++) Body[row, i] = column[i];
+            for (var i = 0; i < row.Size(); i++) Body[column, i] = row[i];
         }
-        public void SetRow(Vector<double> row, int column) {
-            if (row.Size() > Body.GetLength(0)) {
+        public void SetRow(Vector<double> column, int row) {
+            if (column.Size() > Body.GetLength(0)) {
                 MessageBox.Show("Error!");
                 return;
             }
 
-            for (var i = 0; i < row.Size(); i++) Body[i, column] = row[i];
+            for (var i = 0; i < column.Size(); i++) Body[i, row] = column[i];
         }
         public string Print() {
             var temp = "";
@@ -49,9 +49,9 @@ namespace MatrixCalculator.Objects {
         public double GetDeterminant() {
             var n = Body.GetLength(1);
             var det = 1d;
-            
-            var tempBody = Body;
-            
+    
+            var tempBody = (double[,])Body.Clone();
+
             for (var i = 0; i < n; i++) {
                 var min = i;
                 
