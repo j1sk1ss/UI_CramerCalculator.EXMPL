@@ -7,23 +7,18 @@ namespace MatrixCalculator.Objects {
             Body = body;
         }
         public double[,] Body { get; set; }
-        
         public double GetElement(int x, int y) => Body[x, y];
-
         public int GetSize(int dimension) => Body.GetLength(dimension);
-        
         public Vector<double> GetRow(int column) {
             var temp = new double[Body.GetLength(1)];
             for (var i = 0; i < temp.Length; i++) temp[i] = Body[i, column];
             return new Vector<double>(temp);
         }
-        
         public Vector<double> GetColum(int row) {
             var temp = new double[Body.GetLength(0)];
             for (var i = 0; i < temp.Length; i++) temp[i] = Body[row, i];
             return new Vector<double>(temp);
         }
-
         public void SetColumn(Vector<double> column, int row) {
             if (column.Size() > Body.GetLength(1)) {
                 MessageBox.Show("Error!");
@@ -32,7 +27,6 @@ namespace MatrixCalculator.Objects {
 
             for (var i = 0; i < column.Size(); i++) Body[row, i] = column[i];
         }
-        
         public void SetRow(Vector<double> row, int column) {
             if (row.Size() > Body.GetLength(0)) {
                 MessageBox.Show("Error!");
@@ -41,7 +35,6 @@ namespace MatrixCalculator.Objects {
 
             for (var i = 0; i < row.Size(); i++) Body[i, column] = row[i];
         }
-        
         public string Print() {
             var temp = "";
             for (var i = 0; i < Body.GetLength(0); i++) {
@@ -53,7 +46,6 @@ namespace MatrixCalculator.Objects {
             }
             return temp;
         }
-
         public double GetDeterminant() {
             var n = Body.GetLength(1);
             var det = 1d;
