@@ -104,7 +104,7 @@ namespace MatrixCalculator.Windows {
                 var tempGrid = EquationGrid.Children[i] as Grid;
                 var temp = (tempGrid!.Children[^1] as TextBox)!.Text;
                 var tempCof = (tempGrid!.Children[^2] as ComboBox)!.Text;
-                tempAnswers[i] = int.Parse(temp) * (tempCof == "+" ? 1 : -1);
+                tempAnswers[i] = int.Parse(temp) * (tempCof == "-" ? -1 : 1);
 
                 for (var j = 0; j < _size; j++) {
                     var tempCombo = tempGrid!.Children[j * 3] as ComboBox;

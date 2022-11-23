@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MatrixCalculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="NoResize">
     <Grid>
         <ScrollViewer>
-            <Label x:Name="A"></Label> 
+            <Grid x:Name = "AnswerGrid">
+                <Label x:Name="Answer"></Label> 
+            </Grid>
+
         </ScrollViewer>
         <Button Height="20" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="SetVariables"> Задать уравнение </Button>
         <Button Height="20" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,30" Click="ShowAnswer"> Показать решение </Button>
