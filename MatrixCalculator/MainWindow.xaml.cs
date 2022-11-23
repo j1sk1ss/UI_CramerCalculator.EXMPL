@@ -11,10 +11,10 @@ namespace MatrixCalculator {
         public MainWindow() {
             InitializeComponent();
         }
-        public Matrix Matrix { get; set; }
-        public Vector<double> Answers { get; set; }
+        public Matrix Matrix { get; set; } // Матрица уравнений
+        public Vector<double> Answers { get; set; } // Вектор секции ответов
         private void SetVariables(object sender, RoutedEventArgs e) {
-            new QuestSetter(this).Show();
+            new QuestSetter(this).Show(); // При нажатии на кнопку откроется сеттер уравнений
         }
         private void ShowAnswer(object sender, RoutedEventArgs e) {
             AnswerGrid.Children.Clear();
@@ -29,14 +29,14 @@ namespace MatrixCalculator {
             answer.Content += $"Записываем первую часть уравнений как матрицу: \n{Matrix.Print()}" +
                               $"Находим её определитель: {detOrig}\n" +
                               "Подставляем вместо каждой колонки колонку ответов:\n";
-            var determinats = new double[Matrix.GetSize(0)];
+            var determinants = new double[Matrix.GetSize(0)];
             
             for (var i = 0; i < Matrix.GetSize(0); i++) {
                 var tempMatrix = new Matrix((double[,])Matrix.Body.Clone());
                 tempMatrix.SetColumn(Answers, i);
-                determinats[i] = Math.Round(tempMatrix.GetDeterminant());
+                determinants[i] = Math.Round(tempMatrix.GetDeterminant());
                 
-                answer.Content += $"{tempMatrix.Print()} Определитель: {determinats[i]}\n \n";
+                answer.Content += $"{tempMatrix.Print()} Определитель: {determinants[i]}\n \n";
                 
                 var button = new Button() {
                     Name = $"Matrix{i}",
@@ -54,13 +54,12 @@ namespace MatrixCalculator {
             
             answer.Content += $"Делим эти определители на определитель оригинальной матрицы: \n";
             for (var i = 0; i < Matrix.GetSize(0); i++) {
-                answer.Content += $"| {Math.Round(determinats[i])} / {detOrig} |   ";
+                answer.Content += $"| {Math.Round(determinants[i])} / {detOrig} |   ";
             }
 
             var variables = new Vector<double>(new double[Matrix.GetSize(0)]);
             variables = cramerRule.GetCramerRule(Matrix, Answers, variables);
             answer.Content += $"\n В итоге получается ответы: {variables.PrintLikeRow()}";
-            
         }
 
         private void ShowDetermenant(object sender, RoutedEventArgs e) {

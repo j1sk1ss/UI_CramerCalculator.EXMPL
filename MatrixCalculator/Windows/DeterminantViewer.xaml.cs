@@ -8,7 +8,7 @@ namespace MatrixCalculator.Windows
         public DeterminantViewer(Matrix matrix)
         {
             InitializeComponent();
-            Determenant.Content = matrix.Work;
+            Determenant.Content = matrix.Work; // Вывод переменной с шагами получения определителя
         }
     }
 }

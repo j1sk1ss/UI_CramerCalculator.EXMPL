@@ -6,7 +6,7 @@ using MatrixCalculator.Objects;
 
 namespace MatrixCalculator.Windows {
     public partial class QuestSetter {
-        public QuestSetter(MainWindow mainWindow) {
+        public QuestSetter(MainWindow mainWindow) { // Коструктор принимает в себя ссылку на главный класс
             InitializeComponent();
             MainWindow = mainWindow;
         }
@@ -14,21 +14,21 @@ namespace MatrixCalculator.Windows {
 
         private readonly List<char> _variableNames = new() {
             'X', 'Y', 'Z', 'K', 'B', 'P', 'M', 'C', 'F', 'G', 'L', 'U', 'Q', 'V', 'A'
-        };
+        }; // Назвыния переменных
         private int _size;
         
-        private void ChangeMatrix() {
+        private void ChangeMatrix() { // Изменения отображения уравнений 
             try {
-                EquationGrid.Children.Clear();
-                EquationGrid.Height = 0 + _size * 70;
+                EquationGrid.Children.Clear(); // Очищаем грид от всего
+                EquationGrid.Height = 0 + _size * 70; // Задаём размер в зависимости от кол-ва уравнений
                 for (var i = 0; i < _size; i++) {
-                    var tempGrid = new Grid {
+                    var tempGrid = new Grid { // Создаём основу одного уравнения
                         Height = 40,
                         VerticalAlignment = VerticalAlignment.Top
                     };
                     
                     for (var j = 0; j < _size; j++) {
-                        tempGrid.Children.Add(new ComboBox() {
+                        tempGrid.Children.Add(new ComboBox() {  // Закидываем туда необходимое кол-во всякой всячины
                             Width = 50,
                             HorizontalAlignment = HorizontalAlignment.Left,
                             Margin = new Thickness(5 + 125 * j, 0, 0, 0),
@@ -49,7 +49,7 @@ namespace MatrixCalculator.Windows {
                         });
                     }
                     
-                    tempGrid.Children.Add(new Label() {
+                    tempGrid.Children.Add(new Label() { // Добавляем в конец =, место под выбор +\- и для цифры 
                         FontSize = 20,
                         Margin = new Thickness(0 + _size * 125,0,0,0),
                         Content = '='
@@ -72,7 +72,7 @@ namespace MatrixCalculator.Windows {
                     EquationGrid.Children.Add(tempGrid);
                 }
                 
-                var tempButton = new Button() {
+                var tempButton = new Button() { // Кнопки добавления и уменьшения кол-ва уравнений
                     Width = 25,
                     Height = 25,
                     HorizontalAlignment = HorizontalAlignment.Left,
@@ -96,7 +96,7 @@ namespace MatrixCalculator.Windows {
                 MessageBox.Show($"{e}");
             }
         }
-        private void SetValues(object sender, EventArgs e) {
+        private void SetValues(object sender, EventArgs e) {  // При закрытии формы с уравнениями они отправляются в гл. класс
             var tempMatrix = new double[_size, _size];
             var tempAnswers = new double[_size];
             
@@ -118,11 +118,11 @@ namespace MatrixCalculator.Windows {
             MainWindow.Answers = new Vector<double>(tempAnswers);
         }
 
-        private void IncreaseMatrix(object sender, RoutedEventArgs e) {
+        private void IncreaseMatrix(object sender, RoutedEventArgs e) { // Увеличения кол-ва уравнений
             _size++;
             ChangeMatrix();
         }
-        private void DecreaseMatrix(object sender, RoutedEventArgs e) {
+        private void DecreaseMatrix(object sender, RoutedEventArgs e) { // Уменьшение кол-ва уравнений до 1, после нельзя
             if (_size > 1) _size--;  
             ChangeMatrix();
         }
