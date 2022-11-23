@@ -14,7 +14,7 @@ namespace MatrixCalculator.Objects {
             for (var i = 0; i < temp.Length; i++) temp[i] = Body[i, column];
             return new Vector<double>(temp);
         }
-        public Vector<double> GetColum(int row) {
+        public Vector<double> GetColumn(int row) {
             var temp = new double[Body.GetLength(0)];
             for (var i = 0; i < temp.Length; i++) temp[i] = Body[row, i];
             return new Vector<double>(temp);
