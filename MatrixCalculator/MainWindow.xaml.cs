@@ -48,8 +48,6 @@ namespace MatrixCalculator {
                 };
                 button.Click += ShowDetermenant;
                 AnswerGrid.Children.Add(button);
-                
-                tempMatrix = new Matrix((double[,])Matrix.Body.Clone());
             }
             
             answer.Content += $"Делим эти определители на определитель оригинальной матрицы: \n";
@@ -64,7 +62,7 @@ namespace MatrixCalculator {
 
         private void ShowDetermenant(object sender, RoutedEventArgs e) {
             var button = sender as Button;
-            var matrix = Matrix;
+            var matrix = new Matrix((double[,])(Matrix.Body).Clone());
             matrix.SetColumn(Answers, int.Parse(button!.Name.Replace("Matrix", "")));
             matrix.GetDeterminant();
             var determinantViewer = new DeterminantViewer(matrix);
