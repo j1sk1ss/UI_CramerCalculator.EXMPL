@@ -12,7 +12,7 @@ namespace MatrixCalculator.Functions {
 
                 for (var i = 0; i < matrix.GetSize(0); i++) { // Проходимся по матрице
                     matrix.SetColumn(answers, i); // Заменяем колонку на позиции i на колонку ответов в уравнениях
-                    variables[i] = Math.Round(matrix.GetDeterminant() / firstDeterminant, 0); // Получаем определитель делённый на сохранёный ранее
+                    variables[i] = Math.Round(matrix.GetDeterminant() / firstDeterminant, 2); // Получаем определитель делённый на сохранёный ранее
                     matrix = new Matrix((double[,])body.Body.Clone()); // Заного копируем значения из эталонной матрицы для послед. преобразования
                 }
                 return variables; // Возращаем вектор ответов

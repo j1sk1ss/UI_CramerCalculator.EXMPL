@@ -24,7 +24,7 @@ namespace MatrixCalculator {
             answer!.Content = "";
             
             var cramerRule = new CramerRule();
-            var detOrig = Math.Round(Matrix.GetDeterminant());
+            var detOrig = Math.Round(Matrix.GetDeterminant(), 2);
             
             answer.Content += $"Записываем первую часть уравнений как матрицу: \n{Matrix.Print()}" +
                               $"Находим её определитель: {detOrig}\n" +
