@@ -66,6 +66,7 @@ namespace MatrixCalculator {
             var button = sender as Button;
             var matrix = Matrix;
             matrix.SetColumn(Answers, int.Parse(button!.Name.Replace("Matrix", "")));
+            matrix.GetDeterminant();
             var determinantViewer = new DeterminantViewer(matrix);
             determinantViewer.Show();
         }
