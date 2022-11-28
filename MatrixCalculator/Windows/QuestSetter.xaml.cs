@@ -33,13 +33,24 @@ namespace MatrixCalculator.Windows {
                 var temp    = (tempGrid!.Children[^1] as TextBox)!.Text;
                 var tempCof = (tempGrid!.Children[^2] as ComboBox)!.Text;
                 
-                tempAnswers[i] = int.Parse(temp) * (tempCof == "-" ? -1 : 1);
+                if (double.TryParse(temp, out var tempDoubleAnswer)) {
+                    tempAnswers[i] = tempDoubleAnswer * (tempCof == "-" ? -1 : 1);
+                }
+                else {
+                    MessageBox.Show($"На {i} строке ответа введено не число!");
+                }
+                
                 for (var j = 0; j < _size; j++) {
                     var tempCombo = tempGrid!.Children[j * 3] as ComboBox;
                     var tempText  = tempGrid!.Children[j * 3 + 1] as TextBox;
                     var cof    = tempCombo!.Text == "-" ? -1 : 1;
-                    
-                    tempMatrix[i, j] = cof * int.Parse(tempText!.Text);
+
+                    if (double.TryParse(tempText!.Text, out var tempDoubleMatrix)) {
+                        tempMatrix[i, j] = cof * tempDoubleMatrix;
+                    }
+                    else {
+                        MessageBox.Show($"На {i};{j} введено не число!");
+                    }
                 }
             } 
             

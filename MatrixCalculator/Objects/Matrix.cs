@@ -40,7 +40,7 @@ namespace MatrixCalculator.Objects {
             for (var i = 0; i < Body.GetLength(0); i++) {
                 for (var j = 0; j < Body.GetLength(1); j++) {
                     temp += Body[i, j] < 0 ? "" : " ";
-                    temp += Body[i, j] + " ";
+                    temp += Math.Round(Body[i, j], 2) + " ";
                 }
 
                 temp += "\n";
