@@ -15,6 +15,7 @@
                 <Button Width="25" Height="25" HorizontalAlignment="Left" Margin="30,-12,0,0" Click="IncreaseMatrix"> + </Button>
             </Grid>
         </ScrollViewer>
-
+        <Button Height="25" Width="100" Margin="650,380,0,0" Click="SetValues"> Задать уравнение </Button>
+        <Button Height="25" Width="100" Margin="430,380,0,0" Click="Clear"> Очистить </Button>
     </Grid>
 </Window>

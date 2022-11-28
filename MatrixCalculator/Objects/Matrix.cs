@@ -108,6 +108,11 @@ namespace MatrixCalculator.Objects {
                 det *= tempBody.Body[i, i];
             }
             
+            if (Math.Abs(Math.Round(det, 0)) == 0) {
+                MessageBox.Show($"Определитель матрицы = {Math.Round(det, 0)}\n" +
+                                "СЛАУ не имеет решений", "Результат!");
+            }
+
             return det;
         }
     }
