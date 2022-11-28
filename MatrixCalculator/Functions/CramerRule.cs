@@ -8,7 +8,11 @@ namespace MatrixCalculator.Functions {
             try {
                 var matrix = new Matrix((double[,])body.Body.Clone()); // Создайтся обьект матрицы с телом переданной матрицы 
                 var firstDeterminant = body.GetDeterminant(); // Сохраняется определитель полученной матрицы
-                if (firstDeterminant == 0) return null; // Если опред. равен 0, то возвращаем НУЛЛ
+                if (Math.Abs(Math.Round(firstDeterminant, 0)) == 0) {
+                    MessageBox.Show($"Определитель матрицы = {Math.Round(firstDeterminant, 0)}\n" +
+                                    "СЛАУ не имеет решений", "Результат!");
+                    return new Vector<double>(new double[] {0,0,0});
+                } // Если опред. равен 0, то возвращаем НУЛЛ
 
                 for (var i = 0; i < matrix.GetSize(0); i++) { // Проходимся по матрице
                     matrix.SetColumn(answers, i); // Заменяем колонку на позиции i на колонку ответов в уравнениях
